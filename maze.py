@@ -22,6 +22,13 @@ def get_input():
     return direction
 
 
+def find_coordinate(maze):
+    for y, row in enumerate(maze):
+        for x, tile in enumerate(row):
+            if tile == P:
+                return x, y
+
+
 
 def update_maze():
     pass
@@ -36,6 +43,13 @@ def run_game():
 
 
 if __name__ == "__main__":
+    test_maze = [
+        [W, W, W, W, W, W],
+        [W, E, E, E, P, W],
+        [W, W, E, E, E, W],
+        [W, E, E, W, W, W],
+        [W, W, E, E, EX, W],
+        [W, W, W, W, W, W]]
     #print_maze([[W, W, W, W, W, W],
         #[W, E, E, E, P, W],
         #[W, W, E, E, E, W],
@@ -43,4 +57,5 @@ if __name__ == "__main__":
         #[W, W, E, E, EX, W],
         #[W, W, W, W, W, W]])
 
-    print get_input()
+    #print get_input()
+    print find_coordinate(test_maze)
