@@ -6,6 +6,7 @@ R = 'R'
 L = 'L'
 U = 'U'
 D = 'D'
+WIN = "W"
 
 
 def print_maze(maze):
@@ -23,15 +24,20 @@ def get_input():
 
 
 def find_coordinate(maze):
-    for y, row in enumerate(maze):
-        for x, tile in enumerate(row):
+    for x, row in enumerate(maze):
+        for y, tile in enumerate(row):
             if tile == P:
                 return x, y
 
 
+def update_maze(maze, x, y):
+    old_x, old_y = find_coordinate(maze)
+    if maze[x][y] != W:
+        maze[x][y] = P
+        maze[old_x][old_y] = E
+        return maze
 
-def update_maze():
-    pass
+    raise ValueError("You can't go there!")
 
 
 def check_maze():
@@ -58,4 +64,4 @@ if __name__ == "__main__":
         #[W, W, W, W, W, W]])
 
     #print get_input()
-    print find_coordinate(test_maze)
+    print update_maze(test_maze, 0, 3)
